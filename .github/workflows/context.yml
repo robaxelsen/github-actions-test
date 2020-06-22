@@ -7,10 +7,10 @@ jobs:
     steps:
       - name: dump
         run: |
-          echo ${{ contains( 'hello', 'll' }}
-          echo ${{ startsWith( 'hello', 'ke' }}
-          echo ${{ endsWith( 'hello', 'lo' }}
-          echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' }}
+          echo ${{ contains( 'hello', 'll') }}
+          echo ${{ startsWith( 'hello', 'ke') }}
+          echo ${{ endsWith( 'hello', 'lo') }}
+          echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!') }}
   one:
     runs-on: ubuntu-latest
     steps:

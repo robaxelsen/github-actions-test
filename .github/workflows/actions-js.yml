@@ -1,3 +1,5 @@
+name: Actions With JS
+
 on: push
 jobs:
   testing-action:

@@ -5757,9 +5757,10 @@ try {
         ...github.context.repo,
         title,
         body,
-        assignees: assignees ? assignees.split('\n') : undefined
+        assignees: ['robaxelsen']
     })
 
+    // assignees: assignees ? assignees.split('\n') : undefined
     core.setOutput('issue', JSON.stringify(response.data))
     // core.setOutput('issue', `token: ${token}, title: ${title}, body: ${body}, assignees: ${assignees}`);
 } catch(error) {

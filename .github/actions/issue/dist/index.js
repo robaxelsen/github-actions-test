@@ -5758,11 +5758,15 @@ try {
         title,
         body,
         assignees: ['robaxelsen']
+    }).then(response => {
+        return response.data;
+    }).catch(error => {
+        console.log('Octokit request failed with error: ', error);
     })
 
     // assignees: assignees ? assignees.split('\n') : undefined
-    console.log('response: ', response);
-    core.setOutput('issue', JSON.stringify(response.data))
+    // console.log('response: ', response);
+    core.setOutput('issue', JSON.stringify(response))
     // core.setOutput('issue', `token: ${token}, title: ${title}, body: ${body}, assignees: ${assignees}`);
 } catch(error) {
     core.setFailed(error.message)

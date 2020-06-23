@@ -5745,7 +5745,8 @@ exports.getState = getState;
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 
-try {
+async function run() {
+  try {
     const token = core.getInput('token');
     const title = core.getInput('title');
     const body = core.getInput('body');
@@ -5753,26 +5754,20 @@ try {
 
     const octokit = new github.getOctokit(token, {log: 'console'});
 
-    const response = octokit.issues.create({
-        ...github.context.repo,
-        title,
-        body,
-        assignees: ['robaxelsen']
-    }).then(response => {
-        return response.data;
-    }).catch(error => {
-        console.log('Octokit request failed with error: ', error);
+    const response = await octokit.issues.create({
+      ...github.context.repo,
+      title,
+      body,
+      assignees: assignees ? assignees.split('\n') : undefined
     })
 
-    // assignees: assignees ? assignees.split('\n') : undefined
-    // console.log('response: ', response);
-    core.setOutput('issue', JSON.stringify(response))
-    // core.setOutput('issue', `token: ${token}, title: ${title}, body: ${body}, assignees: ${assignees}`);
-} catch(error) {
+    core.setOutput('issue', JSON.stringify(response.data))
+  } catch(error) {
     core.setFailed(error.message)
+  }
 }
 
-
+run();
 
 
 /***/ }),

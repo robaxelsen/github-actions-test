@@ -14,7 +14,6 @@ jobs:
           body: Body
           assignees: |
             robaxelsen
-            rp6
       - run: |
           echo ${{ steps.issue.outputs.issue }}
       - uses: ./.github/actions/hello

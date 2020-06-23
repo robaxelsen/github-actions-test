@@ -17,6 +17,11 @@ async function run() {
       assignees: assignees ? assignees.split('\n') : undefined
     })
 
+    console.log('[===MY DEBUG===] START output from JS')
+    console.log('response.data', response.data)
+    console.log('JSON.stringify(response.data): ', JSON.stringify(response.data));
+    console.log('[===MY DEBUG===] END output from JS')
+
     core.setOutput('issue', JSON.stringify(response.data))
   } catch(error) {
     core.setFailed(error.message)

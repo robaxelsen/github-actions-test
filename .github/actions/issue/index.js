@@ -17,6 +17,7 @@ try {
     })
 
     // assignees: assignees ? assignees.split('\n') : undefined
+    console.log('response: ', response);
     core.setOutput('issue', JSON.stringify(response.data))
     // core.setOutput('issue', `token: ${token}, title: ${title}, body: ${body}, assignees: ${assignees}`);
 } catch(error) {

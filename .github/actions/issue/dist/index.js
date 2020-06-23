@@ -5751,7 +5751,7 @@ try {
     const body = core.getInput('body');
     const assignees = core.getInput('assignees');
 
-    const octokit = new github.getOctokit(token);
+    const octokit = new github.getOctokit(token, {log: 'console'});
 
     const response = octokit.issues.create({
         ...github.context.repo,
@@ -5761,6 +5761,7 @@ try {
     })
 
     core.setOutput('issue', JSON.stringify(response.data))
+    // core.setOutput('issue', `token: ${token}, title: ${title}, body: ${body}, assignees: ${assignees}`);
 } catch(error) {
     core.setFailed(error.message)
 }
